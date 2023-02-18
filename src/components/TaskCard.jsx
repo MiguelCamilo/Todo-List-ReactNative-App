@@ -2,14 +2,22 @@ import {
 	View,
 	Text,
 	StyleSheet,
-	Pressable,
 	TouchableOpacity,
 } from "react-native";
 
-export default function TaskCard({ data }) {
-	const { tasks, done } = data;
+export default function TaskCard({ data, setTasks }) {
+	const { tasks, done, taskId } = data;
 
 	const handleDelete = () => {
+		fetch(`https://todo-app-api-mc.web.app/tasks/${taskId}`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((res) => res.json())
+			.then(setTasks)
+			.catch((err) => console.error(err));
 	};
 
 	return (
@@ -18,11 +26,10 @@ export default function TaskCard({ data }) {
 			<Text style={done ? styles.textColorDone : styles.textColor}>
 				{tasks}
 			</Text>
-			<Pressable style={styles.pressable} onPress={handleDelete}>
-				<TouchableOpacity>
-					<Text style={styles.delete}>Delete</Text>
-				</TouchableOpacity>
-			</Pressable>
+
+			<TouchableOpacity style={styles.pressable} onPress={handleDelete}>
+				<Text style={styles.delete}>Delete</Text>
+			</TouchableOpacity>
 		</View>
 	);
 }
@@ -37,9 +44,15 @@ const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		display: "flex",
 		flexDirection: "column",
+		shadowColor: 'black',
+		shadowOffset: { width: 0, height: 2},
+		shadowOpacity: 0.5,
+		shadowRadius: 1, 
 	},
 	textColor: {
+		paddingBottom: 13,
 		fontSize: 20,
+		fontWeight: "700",
 		color: "black",
 		textTransform: "capitalize",
 		textAlign: "center",
@@ -52,12 +65,13 @@ const styles = StyleSheet.create({
 	},
 	pressable: {
 		marginTop: 5,
-		padding: 8,
+		padding: 14,
 		borderRadius: 10,
 		backgroundColor: "red",
 		color: "white",
 	},
 	delete: {
 		color: "white",
+		fontWeight: "700"
 	},
 });

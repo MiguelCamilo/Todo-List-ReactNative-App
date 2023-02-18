@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { ScrollView, Text, StyleSheet, TouchableOpacity, Pressable } from "react-native";
+import { ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import TaskCard from "./TaskCard";
 import AddTask from "./AddTask";
 
-export default function tasks() {
-	const [tasks, setTasks] = useState();
-
+export default function tasks({ tasks, setTasks }) {
 	// fetch taskList in useEffect
 	// return scrollView w/ taskList mapped to TaskCard
 	useEffect(() => {
@@ -33,15 +31,13 @@ export default function tasks() {
 	return (
 		
 		// if not tasks then showing loading but if there is then map through the taskList pass the props
-		<ScrollView>
-			<Text style={styles.h1}>To Do List</Text>
-				<AddTask setTasks={setTasks}/>
+		<ScrollView style={styles.body}>
 			{!tasks ? (
 				<Text style={styles.h1}>Loading...</Text>
 			) : (
 				tasks.map((element) => (
 					<TouchableOpacity key={element.taskId}  onPress={() => toggleDone(element)}>
-						<TaskCard data={element} />
+						<TaskCard data={element} setTasks={setTasks} />
 					</TouchableOpacity>
 				))
 			)}
@@ -50,11 +46,9 @@ export default function tasks() {
 }
 
 const styles = StyleSheet.create({
-	h1: {
-		fontSize: 30,
-		fontWeight: "700",
-		textAlign: "center",
-		marginTop: 20,
-		marginBottom: 10,
-	},
-});
+	body: {
+		height: "100%",
+		backgroundColor: "#F4F5F6"
+	}
+})
+

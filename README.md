@@ -1,6 +1,8 @@
-<!-- Please update value in the {}  -->
+<h1 align="center">{ Full Stack TodoList Mobile App } 💻 </h1>
 
-<h1 align="center">{ TodoList Mobile App } 💻 </h1>
+## Project Image
+
+![screen shot](./assets/readme.png)
 
 <!-- TABLE OF CONTENTS -->
 
@@ -19,6 +21,7 @@ Overall, this app provides a simple and easy to use interface for managing and v
 
 ## What Did I Learn?
 - What have you learned/improved?
+  - How to build an API connected to a database and using C.R.U.D (Create / Read / Update / Delete )
   - Working on this project helped me develop my skills with React Native and get a better understanding of React Native Components and useState Hooks
 
 ### Built With
@@ -34,11 +37,6 @@ Overall, this app provides a simple and easy to use interface for managing and v
 - The App component has two main functions, handleAddTask and deleteTask. The handleAddTask function is called when the user taps on the plus icon and adds the current task to the taskItems array. The deleteTask function is called when the user taps on the delete icon next to a task, and it removes that task from the taskItems array.
 - The Task component is a simple component that takes a single prop, text, and displays it as a Text component.
 
-## Contact
-
-- Website [miguelcamiloportfolio.netlify.app](https://miguelcamiloportfolio.netlify.app)
-- GitHub [@MiguelCamilo](https://{github.com/MiguelCamilo)
-
-## Project Image
-
-![screen shot](./assets/)
+## 🔗 Contact Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://miguelcamilo.dev)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/miguel-camilo/)

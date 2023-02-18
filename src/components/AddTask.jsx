@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Text, View, TextInput, StyleSheet, Pressable } from "react-native";
+import { Keyboard } from "react-native";
 
 export default function AddTask({ setTasks }) {
+	// manage state
 	const [task, setTask] = useState("");
 
 	// when the handleAdd func runs it will take the value entered
@@ -27,10 +29,14 @@ export default function AddTask({ setTasks }) {
 			.then((res) => res.json())
 			.then(setTasks) // this is being passed from TaskList as a prop
 			.catch((err) => console.error(err));
+			
+			setTask("")
+			Keyboard.dismiss()
 	};
 
+
 	return (
-		<View>
+		<View style={styles.body}>
 			<TextInput
 				style={styles.textInput}
 				placeholder="Enter a task"
@@ -40,7 +46,7 @@ export default function AddTask({ setTasks }) {
 			<Pressable style={styles.pressable} onPress={handleAddTask}>
 				<Text style={styles.button}>Add Task</Text>
 			</Pressable>
-		</View>
+		</View >
 	);
 }
 
@@ -48,8 +54,8 @@ const styles = StyleSheet.create({
 	textInput: {
 		fontWeight: "700",
 		textAlign: "center",
-		marginTop: 10,
-		marginBottom: 10,
+		marginTop: 30,
+		marginBottom: 20,
 		marginHorizontal: 40,
 		borderWidth: 1,
 		borderRadius: 10,
@@ -57,6 +63,7 @@ const styles = StyleSheet.create({
 	},
 	button: {
         color: "white",
+		fontWeight: "700"
 	},
     pressable: {
 		padding: 10,
@@ -64,6 +71,14 @@ const styles = StyleSheet.create({
         width: "30%",
         backgroundColor: 'green',
         borderRadius: 10,
-        marginLeft: 130
-    }
+        marginLeft: 130,
+		marginBottom: 10
+    },
+	body: {
+		backgroundColor: "#F4F5F6",
+		shadowColor: 'black',
+		shadowOffset: { width: 1, height: 1 },
+		shadowOpacity: 5,
+		shadowRadius: 3, 
+	}
 });
