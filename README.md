@@ -1,6 +1,4 @@
-<h1 align="center">{ Full Stack TodoList Mobile App } 💻 </h1>
-
-## Project Image
+<h1 align="center">{ Full Stack TodoList Mobile App } 📱 </h1>
 
 ![screen shot](./assets/readme.png)
 

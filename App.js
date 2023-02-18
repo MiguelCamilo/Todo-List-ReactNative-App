@@ -8,8 +8,8 @@ export default function App() {
 	const [tasks, setTasks] = useState();
 
 	return (
-		<SafeAreaView>
-			<StatusBar style={styles.area} />
+		<SafeAreaView >
+			<StatusBar style="dark" />
 			<Text style={styles.h1}>To Do List</Text>
 			<AddTask setTasks={setTasks} />
 			<TaskList tasks={tasks} setTasks={setTasks} />
@@ -25,10 +25,4 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		marginBottom: 10,
 	},
-  area: {
-    shadowColor: 'black',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 5,
-    shadowRadius: 2, 
-  }
 });
