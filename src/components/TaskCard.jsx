@@ -4,12 +4,13 @@ import {
 	StyleSheet,
 	TouchableOpacity,
 } from "react-native";
+import { api_url } from "../secrets";
 
 export default function TaskCard({ data, setTasks }) {
 	const { tasks, done, taskId } = data;
 
 	const handleDelete = () => {
-		fetch(`https://todo-app-api-mc.web.app/tasks/${taskId}`, {
+		fetch(`${api_url.api}/${taskId}`, {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, StyleSheet } from "react-native";
 import TaskCard from "./TaskCard";
-import AddTask from "./AddTask";
+import { api_url } from "../secrets";
 
 export default function tasks({ tasks, setTasks }) {
 	// fetch taskList in useEffect
 	// return scrollView w/ taskList mapped to TaskCard
 	useEffect(() => {
-		fetch(`https://todo-app-api-mc.web.app/tasks`)
+		fetch(api_url.api)
 			.then((res) => res.json())
 			.then(setTasks)
 			.catch((err) => console.error(err));
@@ -16,7 +16,7 @@ export default function tasks({ tasks, setTasks }) {
 
     const toggleDone = (task) => {
         const done = !!!task.done 
-        fetch(`https://todo-app-api-mc.web.app/tasks/${task.taskId}`, {
+        fetch(`${api_url.api}/${task.taskId}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json"
@@ -49,6 +49,13 @@ const styles = StyleSheet.create({
 	body: {
 		height: "100%",
 		backgroundColor: "#F4F5F6"
-	}
+	},
+	h1: {
+		fontSize: 30,
+		fontWeight: "700",
+		textAlign: "center",
+		marginTop: 20,
+		marginBottom: 10,
+	},
 })
 

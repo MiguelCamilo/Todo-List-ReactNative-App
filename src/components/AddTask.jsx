@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Text, View, TextInput, StyleSheet, Pressable } from "react-native";
 import { Keyboard } from "react-native";
+import { api_url } from "../secrets";
 
 export default function AddTask({ setTasks }) {
 	// manage state
@@ -19,7 +20,7 @@ export default function AddTask({ setTasks }) {
 			tasks: task,
 		};
 
-		fetch(`https://todo-app-api-mc.web.app/tasks`, {
+		fetch(`${api_url.api}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
